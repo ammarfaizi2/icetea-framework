@@ -16,7 +16,7 @@ interface CookieTable
      * @param  bool   $httpOnly
      * @return bool
      */
-    public function make(string $name, string $value, int $minute = null, string $path = "/", string $domain = null, bool $secure = false, bool $httpOnly = true);
+    public function make($name, $value, $minute = null, $path = "/", $domain = null, $secure = false, $httpOnly = true);
 
     /**
      * Get cookie value.
@@ -24,7 +24,7 @@ interface CookieTable
      * @param  string $name
      * @return string
      */
-    public function get(string $name);
+    public function get($name);
 
     /**
      * Delete cookie.
@@ -32,5 +32,5 @@ interface CookieTable
      * @param  string $name
      * @return bool
      */
-    public function delete(string $name);
+    public function delete($name);
 }

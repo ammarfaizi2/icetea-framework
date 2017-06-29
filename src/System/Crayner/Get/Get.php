@@ -10,12 +10,12 @@ class Get
     {
     }
 
-    public function cookie(string $name)
+    public function cookie($name)
     {
         return Cookie::getInstance()->get($name);
     }
 
-    public function header(string $name)
+    public function header($name)
     {
     }
 }

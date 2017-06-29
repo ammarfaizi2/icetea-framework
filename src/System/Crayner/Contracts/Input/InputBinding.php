@@ -11,15 +11,15 @@ interface InputBinding
     /**
      * @param int $cat
      */
-    public function escape(int $cat);
+    public function escape($cat);
 
     /**
      * @param string $key
      */
-    public function encrypt(string $key);
+    public function encrypt($key);
 
     /**
      * @param string $ley
      */
-    public function decrypt(string $key);
+    public function decrypt($key);
 }

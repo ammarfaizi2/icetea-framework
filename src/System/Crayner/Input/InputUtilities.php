@@ -36,7 +36,7 @@ class InputUtilities implements InputBinding
      * @param    int $cat
      * @return  InputUtilities
      */
-    public function escape(int $cat = 0)
+    public function escape($cat = 0)
     {
         if ($cat === 5) {
             $this->toString = addcslashes($this->toString, "A..z");

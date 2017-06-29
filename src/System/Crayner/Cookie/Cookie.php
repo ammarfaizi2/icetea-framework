@@ -42,7 +42,7 @@ class Cookie implements CookieTable
      * @param  bool   $httpOnly
      * @return bool
      */
-    public function make(string $name, string $value, int $minute = null, string $path = "/", string $domain = null, bool $secure = null, bool $httpOnly = true)
+    public function make($name, $value, $minute = null, $path = "/", $domain = null, $secure = null, $httpOnly = true)
     {
         $this->toString = $value;
         if ($minute === 0) {
@@ -68,7 +68,7 @@ class Cookie implements CookieTable
      * @param  string $name
      * @return string
      */
-    public function get(string $name)
+    public function get($name)
     {
         $this->toString = isset($_COOKIE[$name]) ? $_COOKIE[$name] : "";
         return new InputUtilities($this->toString);
@@ -80,7 +80,7 @@ class Cookie implements CookieTable
      * @param  string $name
      * @return bool
      */
-    public function delete(string $name)
+    public function delete($name)
     {
         $this->func = function () use ($name) {
             setcookie($name, null, 0);
