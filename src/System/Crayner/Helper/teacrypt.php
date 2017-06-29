@@ -9,7 +9,7 @@ if (!function_exists("teacrypt")) {
      * @param  string $key
      * @return string
      */
-    function teacrypt(string $string, string $key = "icetea")
+    function teacrypt($string, $key = "icetea")
     {
         return Teacrypt::encrypt($string, $key."\x63\x72\x61\x79\x6e\x65\x72");
     }
@@ -22,7 +22,7 @@ if (!function_exists("teadecrypt")) {
      * @param  string $key
      * @return string
      */
-    function teadecrypt(string $string, string $key = "icetea")
+    function teadecrypt($string, $key = "icetea")
     {
         return Teacrypt::decrypt($string, $key."\x63\x72\x61\x79\x6e\x65\x72");
     }

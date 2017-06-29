@@ -10,12 +10,12 @@ class Set
     {
     }
 
-    public function header(string $name, string $value)
+    public function header($name, $value)
     {
         return header("{$name}: {$value}");
     }
 
-    public function cookie(string $name, string $value, int $minute = null, string $path = "/", string $domain = null, bool $secure = null, bool $httpOnly = true)
+    public function cookie($name, $value, $minute = null, $path = "/", $domain = null, $secure = null, $httpOnly = true)
     {
         return Cookie::getInstance()->make($name, $value, $minute, $path, $domain, $secure, $httpOnly);
     }

@@ -93,7 +93,7 @@ class DB extends DatabaseFactory
      * @param  array  $data
      * @return \PDO
      */
-    protected static function exec(string $statement, array $data)
+    protected static function exec($statement, $data)
     {
         $self      = self::getInstance();
 
@@ -122,7 +122,7 @@ class DB extends DatabaseFactory
      * @param  string $statement
      * @return string
      */
-    protected static function makeStatement(string $statement)
+    protected static function makeStatement($statement)
     {
         $self  = self::getInstance();
 
@@ -140,7 +140,7 @@ class DB extends DatabaseFactory
      * @param  array $data
      * @return array
      */
-    protected static function makeInsertParameter(array $data)
+    protected static function makeInsertParameter($data)
     {
         foreach ($data as $field => $value) {
             $newData[":{$field}"] = $value;
@@ -156,7 +156,7 @@ class DB extends DatabaseFactory
      * @param  array  $data
      * @return array
      */
-    protected static function makeMultipleInsert(string $table, array $data)
+    protected static function makeMultipleInsert($table, $data)
     {
         $insert_values = array();
 
@@ -183,7 +183,7 @@ class DB extends DatabaseFactory
      * @param  array $data
      * @return array
      */
-    protected static function makeUpdateParameter(array $data)
+    protected static function makeUpdateParameter($data)
     {
         foreach ($data as $field => $value) {
             $newData[] = "{$field}=:{$field}";
@@ -348,7 +348,7 @@ class DB extends DatabaseFactory
      *
      * @return Boolean
      */
-    protected function makeIncreDecrement(string $column, $value = null, $where = [], $operator) {
+    protected function makeIncreDecrement($column, $value = null, $where = [], $operator) {
         $self = self::getInstance();
 
         $table = $self->table_name;
@@ -370,7 +370,7 @@ class DB extends DatabaseFactory
      * @param  string $table
      * @return Instance
      */
-    public static function table(string $table)
+    public static function table($table)
     {
         $self             = self::getInstance();
         $self->table_name = $table;
@@ -384,7 +384,7 @@ class DB extends DatabaseFactory
      * @param  array $data
      * @return boolean
      */
-    public static function insert(array $data)
+    public static function insert($data)
     {
         $self  = self::getInstance();
         $table = $self->table_name;
@@ -412,7 +412,7 @@ class DB extends DatabaseFactory
      * @param  array $data
      * @return boolean
      */
-    public static function update(array $data)
+    public static function update($data)
     {
         $self      = self::getInstance();
 
@@ -450,21 +450,21 @@ class DB extends DatabaseFactory
      * @param  string $relation
      * @return boolean
      */
-    public function join(string $table, string $foreignKey1, string $operator, string $foreignKey2, string $relation = "INNER")
+    public function join($table, $foreignKey1, $operator, $foreignKey2, $relation = "INNER")
     {
         $self               = self::getInstance();
         $self->optionJoin[] = " {$relation} JOIN {$table} ON {$foreignKey1}{$operator}{$foreignKey2}";
         return $self;
     }
 
-    public function rightJoin(string $table, string $foreignKey1, string $operator, string $foreignKey2, string $relation = "RIGHT")
+    public function rightJoin($table, $foreignKey1, $operator, $foreignKey2, $relation = "RIGHT")
     {
         $self               = self::getInstance();
         $self->optionJoin[] = " {$relation} JOIN {$table} ON {$foreignKey1}{$operator}{$foreignKey2}";
         return $self;
     }
 
-    public function leftJoin(string $table, string $foreignKey1, string $operator, string $foreignKey2, string $relation = "LEFT")
+    public function leftJoin($table, $foreignKey1, $operator, $foreignKey2, $relation = "LEFT")
     {
         $self               = self::getInstance();
         $self->optionJoin[] = " {$relation} JOIN {$table} ON {$foreignKey1}{$operator}{$foreignKey2}";
@@ -511,12 +511,12 @@ class DB extends DatabaseFactory
      * @return Instance
      */
 
-    public function increment(string $column, $value = null, $where = [], $operator = "+") 
+    public function increment($column, $value = null, $where = [], $operator = "+") 
     {   
         return self::getInstance()->makeIncreDecrement($column, $value, $where, $operator);
     }
 
-    public function decrement(string $column, $value = null, $where = [], $operator = "-") 
+    public function decrement($column, $value = null, $where = [], $operator = "-") 
     {   
         return self::getInstance()->makeIncreDecrement($column, $value, $where, $operator);
     }
@@ -555,7 +555,7 @@ class DB extends DatabaseFactory
      * @param   string || integer $sort
      * @return  Instance
      */
-    public function orderBy(string $column, string $sort)
+    public function orderBy($column, $sort)
     {
         $self              = self::getInstance();
         $self->optionOrder = " ORDER BY {$column} {$sort}";

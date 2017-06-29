@@ -48,7 +48,7 @@ class InputHandler implements PostGate
      * @param  string $key
      * @return InputHandler
      */
-    public function post(string $key)
+    public function post($key)
     {
         $this->toString = isset($this->purePost[$key]) ? $this->purePost[$key] : "";
         return new InputUtilities($this->toString);

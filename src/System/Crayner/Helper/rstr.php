@@ -12,7 +12,7 @@ if (!function_exists("rstr")) {
      * @param    bool   $pure
      * @return    string
      */
-    function rstr(int $n = 32, string $list = "", bool $pure = false)
+    function rstr($n = 32, $list = "", $pure = false)
     {
         if ($pure) {
             $list = $list;

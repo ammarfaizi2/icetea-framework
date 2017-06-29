@@ -26,7 +26,7 @@ class InputUtilities implements InputBinding
      *
      * @param string $toString
      */
-    public function __construct(string $toString, \Closure $func = null)
+    public function __construct($toString, \Closure $func = null)
     {
         $this->toString = $toString;
         $this->func     = $func;
@@ -50,7 +50,7 @@ class InputUtilities implements InputBinding
      * @param  string $key
      * @return InputUtilities
      */
-    public function encrypt(string $key = "icetea")
+    public function encrypt($key = "icetea")
     {
         $this->toString = empty($this->toString) ? '' : Teacrypt::encrypt($this->toString, $key);
         return $this;
@@ -60,7 +60,7 @@ class InputUtilities implements InputBinding
      * @param  string $key
      * @return InputUtilities
      */
-    public function decrypt(string $key)
+    public function decrypt($key)
     {
         $this->toString = empty($this->toString) ? '' : Teacrypt::decrypt($this->toString, $key);
         return $this;

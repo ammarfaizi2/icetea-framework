@@ -14,7 +14,7 @@ class Loader
      * @param string $view
      * @param string $__variables
      */
-    public function view(string $___view, array $___variables = null, bool $___realpath = false)
+    public function view($___view, $___variables = null, $___realpath = false)
     {
         $___file = BASEPATH.'/App/Views/' . ($___realpath ? $___view : $___view . '.tpl.php');
         if (!file_exists($___file)) {
@@ -34,7 +34,7 @@ class Loader
      *
      * @param int $code
      */
-    public function error(int $code)
+    public function error($code)
     {
         http_response_code($code);
         $this->helper("url");
@@ -48,7 +48,7 @@ class Loader
      * @param string $helper
      * @param bool   $realpath
      */
-    public function helper(string $helper, bool $realpath = false)
+    public function helper($helper, $realpath = false)
     {
         include __DIR__ . '/Crayner/Helper/'. ($realpath ? $helper : $helper .'.php');
     }
