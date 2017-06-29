@@ -1,0 +1,21 @@
+{
+    "name": "ammarfaizi2/icetea-framework",
+    "description": "IceTea Framework",
+    "type": "Package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ammar Faizi",
+            "email": "ammarfaizi2@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6"
+    },
+    "autoload": {
+        "psr-0": {
+            "Console": "src/",
+            "System": "src/"
+        }
+    }
+}
