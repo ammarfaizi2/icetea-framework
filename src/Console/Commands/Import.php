@@ -67,17 +67,17 @@ class Import implements Command
         $zzzzzz = $mysqli->query('SET foreign_key_checks = 1');
         $mysqli->query("SET NAMES 'utf8'");
         $templine = '';    // Temporary variable, used to store current query
-    foreach ($allLines as $line) {                                            // Loop through each line
-        if (substr($line, 0, 2) != '--' && $line != '') {
-            $templine .= $line;    // (if it is not a comment..) Add this line to the current segment
-            if (substr(trim($line), -1, 1) == ';') {        // If it has a semicolon at the end, it's the end of the query
-                if (!$mysqli->query($templine)) {
-                    print('Error performing query \'<strong>' . $templine . '\': ' . $mysqli->error . '<br /><br />');
+        foreach ($allLines as $line) {                                            // Loop through each line
+            if (substr($line, 0, 2) != '--' && $line != '') {
+                $templine .= $line;    // (if it is not a comment..) Add this line to the current segment
+                if (substr(trim($line), -1, 1) == ';') {        // If it has a semicolon at the end, it's the end of the query
+                    if (!$mysqli->query($templine)) {
+                        print('Error performing query \'<strong>' . $templine . '\': ' . $mysqli->error . '<br /><br />');
+                    }
+                    $templine = ''; // set variable to empty, to start picking up the lines after ";"
                 }
-                $templine = ''; // set variable to empty, to start picking up the lines after ";"
             }
         }
-    }
         echo 'Importing finished. Now, Delete the import file.'.PHP_EOL.PHP_EOL;
         die;
     }

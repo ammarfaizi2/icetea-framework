@@ -30,7 +30,7 @@ class Router
      */
     public function __construct($uri)
     {
-        $this->uri = implode("/",$uri);
+        $this->uri = implode("/", $uri);
         $this->uri = substr($this->uri, 0, 1) != "/" ? "/".$this->uri : $this->uri;
     }
 
@@ -82,7 +82,8 @@ class Router
                 if (isset($this->routes[$key][$_SERVER['REQUEST_METHOD']])) {
                     $val = $this->routes[$key][$_SERVER['REQUEST_METHOD']];
                     if ($val instanceof Closure) {
-                        $val(); die;
+                        $val();
+                        die;
                     } elseif (is_string($val)) {
                         $val = explode("@", $val);
                         if (count($val) != 2) {

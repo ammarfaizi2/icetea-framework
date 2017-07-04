@@ -265,7 +265,7 @@ class DB extends DatabaseFactory
     {
         $self = self::getInstance();
 
-        if(array_key_exists(0, $array)):
+        if (array_key_exists(0, $array)) :
             
             foreach ($array as $a):
                 $make = [
@@ -289,21 +289,20 @@ class DB extends DatabaseFactory
                 $self->optionWhereData = array_merge(
                     $self->optionWhereData, [":where_{$make['parameter']}" => $whereData]
                 );
-            endforeach;
-        else:
+            endforeach; else:
 
-            foreach($array as $a => $v):
-                $param     = str_replace(".", "_", $a);
-                $where     = $self->makeWhere($param, $a, '=', $v);
-                $whereData = $self->makeOptionWhere($param, $a, '=', $v);
+                foreach ($array as $a => $v):
+                    $param     = str_replace(".", "_", $a);
+                            $where     = $self->makeWhere($param, $a, '=', $v);
+                            $whereData = $self->makeOptionWhere($param, $a, '=', $v);
 
-                array_push($self->optionWhere, $type.$where);
-                $self->optionWhereData = array_merge($self->optionWhereData, [":where_{$param}" => $whereData]);
-            endforeach;
+                            array_push($self->optionWhere, $type.$where);
+                            $self->optionWhereData = array_merge($self->optionWhereData, [":where_{$param}" => $whereData]);
+                endforeach;
 
-        endif;
+            endif;
 
-        return $self;
+            return $self;
     }
 
     /**
@@ -348,14 +347,17 @@ class DB extends DatabaseFactory
      *
      * @return Boolean
      */
-    protected function makeIncreDecrement($column, $value = null, $where = [], $operator) {
+    protected function makeIncreDecrement($column, $value = null, $where = [], $operator)
+    {
         $self = self::getInstance();
 
         $table = $self->table_name;
 
         $val = (!empty($value)) ? (int) $value : 1;
 
-        if(!empty($where)) $self = $self->where($where);
+        if (!empty($where)) {
+            $self = $self->where($where);
+        }
 
         $statement = "UPDATE {$table} SET {$column} =  {$column} {$operator} {$val}";
 
@@ -511,13 +513,13 @@ class DB extends DatabaseFactory
      * @return Instance
      */
 
-    public function increment($column, $value = null, $where = [], $operator = "+") 
-    {   
+    public function increment($column, $value = null, $where = [], $operator = "+")
+    {
         return self::getInstance()->makeIncreDecrement($column, $value, $where, $operator);
     }
 
-    public function decrement($column, $value = null, $where = [], $operator = "-") 
-    {   
+    public function decrement($column, $value = null, $where = [], $operator = "-")
+    {
         return self::getInstance()->makeIncreDecrement($column, $value, $where, $operator);
     }
 
@@ -634,9 +636,9 @@ class DB extends DatabaseFactory
     {
         $self      = self::getInstance();
         
-        if(empty($self->optionSelect)) {
+        if (empty($self->optionSelect)) {
             $self->optionSelect = "MAX({$column})";
-        }else {
+        } else {
             $self->optionSelect .= ",MAX({$column})";
         }
         
@@ -655,9 +657,9 @@ class DB extends DatabaseFactory
     {
         $self      = self::getInstance();
         
-        if(empty($self->optionSelect)) {
+        if (empty($self->optionSelect)) {
             $self->optionSelect = "MIN({$column})";
-        }else {
+        } else {
             $self->optionSelect .= ",MIN({$column})";
         }
         
@@ -676,9 +678,9 @@ class DB extends DatabaseFactory
     {
         $self      = self::getInstance();
         
-        if(empty($self->optionSelect)) {
+        if (empty($self->optionSelect)) {
             $self->optionSelect = "AVG({$column})";
-        }else {
+        } else {
             $self->optionSelect .= ",AVG({$column})";
         }
         
