@@ -20,7 +20,21 @@ class UriSegment
         } else {
             $from = $_SERVER['REQUEST_URI'];
         }
-        return explode("/", parse_url($from, PHP_URL_PATH));
+        $from = explode("/", $from);
+        foreach ($from as $key => $value) {
+            if (empty($value)) {
+                unset($from[$key]);
+                $is = 1;
+            }
+        }
+        if (isset($is)) {
+            $fr = array();
+            foreach ($from as $value) {
+                $fr[] = $value;
+            }
+            $from = $fr;
+        }
+        return $from;
     }
 
     /**
