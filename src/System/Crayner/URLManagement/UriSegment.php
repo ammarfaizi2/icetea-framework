@@ -20,7 +20,8 @@ class UriSegment
         } else {
             $from = $_SERVER['REQUEST_URI'];
         }
-        $from = explode("/", $from);
+        $from = explode("?", $from, 2);
+        $from = explode("/", $from[0]);
         foreach ($from as $key => $value) {
             if (empty($value)) {
                 unset($from[$key]);

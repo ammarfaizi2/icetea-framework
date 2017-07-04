@@ -71,9 +71,6 @@ class Crayner
             (new Controller())->load->error(404);
         }
         if (Configer::manualRoute()) {
-            
-            // $this->segments[0] = "/";
-
             $router = Router::getInstance($this->segments);
             Configer::loadRoutes();
             try {
@@ -88,11 +85,12 @@ class Crayner
                     } else {
                         (new Controller())->load->error(404);
                     }
+                } else {
+                    (new Controller())->load->error(404);
                 }
             } catch (MethodNotAllowedHttpException $e) {
                 print "MethodNotAllowedHttpException : ".$e->getMessage();
             }
-            
             die;
         }
         if (Configer::automaticRoute()) {
