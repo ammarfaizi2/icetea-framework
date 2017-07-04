@@ -89,7 +89,6 @@ class Crayner
                         (new Controller())->load->error(404);
                     }
                 }
-                var_dump($action);
             } catch (MethodNotAllowedHttpException $e) {
                 print "MethodNotAllowedHttpException : ".$e->getMessage();
             }
