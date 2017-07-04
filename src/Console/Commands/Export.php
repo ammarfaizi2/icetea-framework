@@ -9,38 +9,16 @@ use Console\Exception\InvalidArgumentException;
 
 class Export implements Command
 {
-    // EXAMPLE:   EXPORT_TABLES("localhost","user","pass","db_name" );
-    //optional: 5th parameter - to backup specific tables only: array("mytable1","mytable2",...)
-    //optional: 6th parameter - backup filename
-    // IMPORTANT NOTE for people who try to change strings in SQL FILE before importing, MUST READ:  goo.gl/2fZDQL
-                    
-    // https://github.com/tazotodua/useful-php-scripts
     public function prepare($selection, $optional, $command)
     {
-        /*$this->selection = $selection;
-        $this->command   = strtolower($command);
-        $this->optional  = $optional;*/
     }
 
     public function argument($argument)
     {
-        /*try {
-            if (count($argument) > 1) {
-                throw new InvalidArgumentException("Invalid command argument !", 400);
-            } else {
-                $this->filename = $argument[0];
-            }
-        } catch (InvalidArgumentException $e) {
-            print Message::error($e->getMessage(), "InvalidArgumentException", $e->getFile(), $e->getLine());
-            die;
-        } catch (\Exception $e) {
-            print Message::error($e->getMessage(), "\\Exception", $e->getFile(), $e->getLine());
-        }*/
     }
 
     public function showResult()
     {
-        /*return $this->result;*/
     }
 
     public function execute()
@@ -94,7 +72,6 @@ class Export implements Command
                         }
                     }
                     $content .=")";
-                    //every after 100 command cycle [or at last line] ....p.s. but should be inserted 1 cycle eariler
                     if ((($st_counter+1)%100==0 && $st_counter!=0) || $st_counter+1==$rows_num) {
                         $content .= ";";
                     } else {
