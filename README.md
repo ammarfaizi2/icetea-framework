@@ -7,15 +7,6 @@
 composer require ammarfaizi2/icetea-framework
 ```
 
-
-## Start Development
-
-```shell
-php icetea serve
-
-```
-
-
 ## Credits
 
 - <a href="https://github.com/ammarfaizi2">Ammar Faizi</a>
