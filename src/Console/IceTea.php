@@ -6,7 +6,7 @@ defined("STDIN") or die("Error ! STDIN not defined !");
 defined("APP_DIR") or die("Error ! APP_DIR not defined !");
 defined("SYSTEM_DIR") or die("Error ! SYSTEM_DIR not defined !");
 defined("PUBLIC_DIR") or die("Error ! PUBLIC_DIR not defined !");
-defined("TEMPLATE_DIR") or die("Error ! TEMPLATE_DIR not defined !");
+define("TEMPLATE_DIR", __DIR__."/template");
 
 use Console\ConsoleLoader;
 use Console\Color\Message;
