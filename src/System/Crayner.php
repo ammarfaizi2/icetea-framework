@@ -11,7 +11,7 @@ use System\Exception\MethodNotAllowedHttpException;
 
 /**
  *
- * @author    Ammar Faizi    <ammarfaizi2@gmail.com>
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
  */
 
 class Crayner
@@ -24,20 +24,17 @@ class Crayner
     private $segments;
 
     /**
-     *
-     * @var    string
+     * @var string
      */
     private $firstSegment;
 
     /**
-     *
      * @var string
      */
     private $secondSegment;
 
     /**
-     *
-     * @var    array
+     * @var array
      */
     private $optionalSegment;
 
@@ -52,11 +49,17 @@ class Crayner
         $this->optionalSegment    = array_diff($this->segments, array('', $this->firstSegment, $this->secondSegment));
     }
 
+    /**
+     * Run IceTea Framework.
+     */
     public static function run()
     {
         self::getInstance()->_run();
     }
 
+    /**
+     * Get URI
+     */
     public static function getURI()
     {
         return self::getInstance()->segments;
