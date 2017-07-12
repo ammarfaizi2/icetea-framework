@@ -11,9 +11,9 @@ class Loader
     /**
      * Load view.
      *
-     * @param string    $view
-     * @param array     $___variables
-     * @param bool      $___realpath
+     * @param string $view
+     * @param array  $___variables
+     * @param bool   $___realpath
      */
     public function view($___view, $___variables = null, $___realpath = false)
     {
