@@ -19,7 +19,6 @@ use Console\Input\ArgvInput;
 class IceTea
 {
     /**
-     *
      * @var string
      */
     public $status;
